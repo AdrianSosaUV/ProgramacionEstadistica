@@ -28,11 +28,11 @@ def dfsearch(dominio, Fx, l=0, b=0, type="min", D=None, x=None, msol=None):
 	x = [None]*len(dominio) if x== None else x
 	msol = ([None, float('inf')]if type=="min" else [None, float('-inf')]) if msol == None else msol  
 
-	if ((l-1)==D):
+	if ((int(l)-1)==D):
 		ib = fsearch(dominio, Fx, type)
 		return np.min(msol[0]) if ib==1 else x
 	else:
-		for j in range(len(dominio)):
+		for j in range(len(dominio)-1):
 			x[l-1]= dominio[l-1][j]
 			msol = dfsearch(dominio, Fx, l+1, j, type, x=x, msol=msol)	
 	return np.min(msol)if type =="min" else np.max(msol)

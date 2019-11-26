@@ -23,16 +23,12 @@ def fsearch(sol, Fx, type="min"):
 	x = pd.DataFrame((sol))
 	y = x.apply(Fx,1)
 
-	ib = y.min() if type == "min" else y.max()
-	ic = sorted(ib) if type == "min" else sorted(ib, reverse=True)
-
-	cont = 0
-	for i in ib:
-		if not i == ic[0]:
-			cont += 1
-		else:
-			break
-
-	row = y[cont].idxmin() if type == "min" else y[cont].idxmax()
-	return {"index":(cont, row), "sol":x[cont][row], "eval":y[cont][row]}
+	try:
+		ib = np.min(y) if type == "min" else np.max(y)
+		ib = int(ib)
+	except :
+		ib = np.min(y)[0] if type == "min" else np.max(y)[0]
+		ib = int(ib)
+		
+	return {"index":ib, "sol":sol[ib], "eval":np.min(x) if type == "min" else np.max(x)}
 

@@ -1,6 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import numpy as np
+from fsearch import *
 
 def MontecarloSearch(N, lower, upper, Fx, type="min"):
 
@@ -12,6 +14,6 @@ def MontecarloSearch(N, lower, upper, Fx, type="min"):
 	s = np.zeros((N, D))
 	for i in range(N):
 		for j in range(D):
-			s[N][D]: np.random.randint(lower[D], upper[D])
+			s[i][j]: np.random.randint(lower[j], upper[j])
 
-	return fsearch(s, Fx, type)
+	return fsearch(s, Fx, type=type)

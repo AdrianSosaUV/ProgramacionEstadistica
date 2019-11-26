@@ -3,7 +3,7 @@
 
 import numpy as np 
 import math
-from dfsearch import *
+from fsearch import *
 
 def GridSearch(step, lower, upper, Fx, type="min"):
 	"""	Metodo estandar de busqueda en malla
@@ -23,5 +23,5 @@ def GridSearch(step, lower, upper, Fx, type="min"):
 	dominio = [None] * D 	#dominio de valores
 	for i in range(D):
 		dominio[i]= np.arange(lower[i], upper[i], step[i])
-	return dfsearch(dominio, Fx, type=type)
+	return fsearch(dominio, Fx, l=1, type=type)
 
