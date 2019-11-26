@@ -104,8 +104,3 @@ class A_star():
 			print("Ruta con {} movimientos:".format(len(self.path)))
 			for i in self.path:
 				print(i)
-
-
-
-
-				https://classroom.google.com

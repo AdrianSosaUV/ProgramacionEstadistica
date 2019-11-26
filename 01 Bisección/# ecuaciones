@@ -1,5 +1,0 @@
-# ecuaciones
-
-fx1 = pow((x-7),3)+ pow((2*x-5),2)
-fx2 = - cos(x) + sin(x)
-fx3 = sin(x+5) + pow(x-2,2) - 1.5 *x

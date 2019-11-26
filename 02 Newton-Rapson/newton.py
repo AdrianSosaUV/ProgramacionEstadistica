@@ -1,3 +1,6 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def newton(f, df, x_0, maxiter=50, xtol=1.0e-6, ftol=1.0e-6):
     """Método de Newton
     Halla la raíz de la función f en el entorno de x_0 mediante el método de
@@ -22,39 +25,3 @@ def newton(f, df, x_0, maxiter=50, xtol=1.0e-6, ftol=1.0e-6):
         if abs(dx / x) < xtol and abs(f(x)) < ftol:
             return x
     raise RuntimeError("No hubo convergencia después de {} iteraciones".format(maxiter))
-
-
-
-
-
-
-
-
-
-
-def newt(Fx,Fx1, p0, iters=50 , tol = 1.0e-6):
-    for i in range(iters):
-        p0= float(p0)
-        p = p0 - (Fx(p0)/Fx1(p0))
-
-        if abs(p - p0)< tol:
-            return float(p)
-            i= iters
-        else:
-            i += 1
-            p0=p
-
-
-
-
-
-
-
-
-def f(x):
-    """Funcion a evaluar x^3 +4x^2 -10"""
-    return pow(x,3)+ 4*pow(x,2)-10
-
-def df(x):
-    '''Derivada de la funcion, 3x^2 + 8x '''
-    return 3*pow(x,2) + 8*x
