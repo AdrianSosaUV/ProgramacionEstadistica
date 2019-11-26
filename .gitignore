@@ -124,10 +124,10 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-.pptx
+*.pptx
 test.py
 examples.py
-.ipynb
-.docx
-.pdf
-.R
+*.ipynb
+*.docx
+*.pdf
+*.R
