@@ -39,6 +39,3 @@ def HillClimbing(x, Fx, lower, upper, N=1000, type="min"):
 			else:
 				return {"sol":x,"eval":best1}
 
-
-		
-

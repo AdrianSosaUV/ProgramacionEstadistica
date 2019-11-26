@@ -1,7 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
- 
-import pandas as pd 
+
+import pandas as pd
+import numpy as np 
 
 def fsearch(sol, Fx, type="min"):
 	"""Método de busqueda ciega
@@ -34,3 +35,4 @@ def fsearch(sol, Fx, type="min"):
 
 	row = y[cont].idxmin() if type == "min" else y[cont].idxmax()
 	return {"index":(cont, row), "sol":x[cont][row], "eval":y[cont][row]}
+

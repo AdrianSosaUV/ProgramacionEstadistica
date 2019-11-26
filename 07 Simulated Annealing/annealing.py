@@ -4,6 +4,7 @@
 import numpy as np
 import pandas as pd 
 from fsearch import *
+from neighborhood import *
 
 def annealing(x, Fx, lower, upper, N=1000, W=10, maxiter=20000, type="min"):
 
@@ -31,19 +32,3 @@ def annealing(x, Fx, lower, upper, N=1000, W=10, maxiter=20000, type="min"):
 		else:
 			break
 	return Best
-
-
-
-
-
-
-def neighborhood(lower, upper, N):
-	D=len(lower)
-	sol = np.zeros((N,D))
-	for i in range(N):
-		for j in range(D):
-			sol[i][j] = np.random.uniform(lower[j],upper[j])
-	return sol 
-
-
-
