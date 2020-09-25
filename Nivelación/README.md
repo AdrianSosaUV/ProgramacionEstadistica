@@ -3,12 +3,10 @@
 ## tabla de contenidos
 
 * Tipos de datos
-    * int
-    * str
-    * double
-    * float
-    * boolean
-    * tuple
+    * Numérico
+    * Caracter
+    * Complejo
+    * Lógico
 * Arreglos
     * Vectores
     * Matrices
