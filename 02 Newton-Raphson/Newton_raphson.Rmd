@@ -78,12 +78,12 @@ x <- seq(limI, limS, steps)
 y <- c()
 for (i in seq_along(x)){y[i] <- fx1(x[i])}
 # se optiene la ráiz
-raiz <- newton(fx1,dfx1, p_0)
+ráiz <- newton(fx1,dfx1, p_0)
 
 ```
-El resultado se almacenara en la variable *raiz*, para conocerlo basta con imprimirlo:
+El resultado se almacenara en la variable *ráiz*, para conocerlo basta con imprimirlo:
 ```{r}
-raiz
+ráiz
 ```
 Si deseamos podémos gráficar la función y nuestro resultado.
 
@@ -92,19 +92,19 @@ Si deseamos podémos gráficar la función y nuestro resultado.
 df <- data.frame(x,y)  
 ggplot(data= df, mapping=aes(x= x, y =y))+
   geom_line(color=4)+
-  annotate(geom="text",x=raiz-2, y=0, label="Raiz ->")+
-  annotate(geom="point", x=raiz,y =0, size =3, shape=1, fill="transparent")
+  annotate(geom="text",x=ráiz-2, y=0, label="Ráiz ->")+
+  annotate(geom="point", x=ráiz,y =0, size =3, shape=1, fill="transparent")
 ```
 \newpage
 Si deseamos podémos calcular y gráficar ambas raices de la función.
 
 ```{r}
-raiz_superior <- newton(fx1,dfx1, limS)
-raiz_inferior <- newton(fx1,dfx1, limI)
+ráiz_superior <- newton(fx1,dfx1, limS)
+ráiz_inferior <- newton(fx1,dfx1, limI)
 ggplot(data= df, mapping=aes(x= x, y =y))+
   geom_line(color=4)+
-  annotate(geom="text",x=raiz_superior+2, y=0, label=" <- Raiz superior ")+
-  annotate(geom="point", x=raiz_superior,y =0, size =3, shape=1, fill="transparent")+
-  annotate(geom="text",x=raiz_inferior-2, y=0, label=" Raiz inferior -> ")+
-  annotate(geom="point", x=raiz_inferior,y =0, size =3, shape=1, fill="transparent")
+  annotate(geom="text",x=ráiz_superior+2, y=0, label=" <- Ráiz superior ")+
+  annotate(geom="point", x=ráiz_superior,y =0, size =3, shape=1, fill="transparent")+
+  annotate(geom="text",x=ráiz_inferior-2, y=0, label=" Ráiz inferior -> ")+
+  annotate(geom="point", x=ráiz_inferior,y =0, size =3, shape=1, fill="transparent")
 ```
