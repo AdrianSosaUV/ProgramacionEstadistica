@@ -1,0 +1,104 @@
+---
+title: "Programación Estadística"
+author:
+- name: Adrián Sosa
+- affiliation: Universidad Veracruzana
+# date: "14/10/2020"
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: ../svm-latex-ms.tex
+subtitle: "Búsqueda ciega"
+header-includes:
+  -  \usepackage{hyperref}
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+spacing: double
+endnote: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("fsearch.R", encoding = "utf-8")
+source("ecuaciones.R", encoding = "utf-8")
+library("ggplot2")
+```
+
+# Búsqueda ciega
+
+La búsqueda ciega completa asume el agotamiento de todas las alternativas, 
+donde cualquier búsqueda previa no afecta la forma en que se prueban las siguientes 
+soluciones. Dado que Se prueba el espacio de búsqueda completo, siempre se encuentra la solución óptima. La búsqueda ciega solo es aplicable a espacios de búsqueda discretos y es fácil de codificar de dos formas. 
+
+Primero, configurando el espacio de búsqueda completo en una matriz y luego probando secuencialmente cada fila (solución) de esta matriz. 
+
+En segundo lugar, de forma recursiva, configurando el espacio de búsqueda como un árbol, donde cada rama denota un valor posible para una variable dada y todas las soluciones aparecen en las hojas (al mismo nivel). 
+
+Dos ejemplos bastante conocidos delos métodos ciegos basados en estructuras de árbol son los algoritmos de profundidad y de amplitud.
+
+El primero comienza en la raíz del árbol y atraviesa cada rama tanto como esposible, antes de dar marcha atrás. El segundo también comienza en la raíz pero busca en un nivel base, buscando primero todos los nodos sucesivos de la raíz y luego el siguiente sucesivo a los nodos, etc.
+
+La principal desventaja de la búsqueda ciega pura es que no es factible cuando el espacio de búsqueda es continuo o demasiado grande, una situación que a menudo ocurre con las tareas del mundo real. 
+
+Esta sección presenta dos funciones de búsqueda ciega: fsearch y dfsearch. La primera es una función más simple que requiere que el espacio de búsqueda se defina explícitamente en una matriz en el formato soluciones D (búsqueda de argumento), mientras que la última realiza una implementación recursiva de la búsqueda en profundidad y requiere la definición de los valores de dominio para cada variable a optimizar (dominio de argumento). Ambas funciones reciben como argumentos la función de evaluación (FUN), el tipo de optimización (tipo, un carácter con "min" o "max") y argumentos adicionales, (denotados por ... y que podría ser utilizado por la función de evaluación FUN). 
+
+Donde dfsearch es una función recursiva que prueba si el nodo del árbol es una salida, calcula la función de evaluación para la solución respectiva, de lo contrario atraviesa las sub ramas del nodo. Esta función requiere algunas variables de estado de memoria (l, b, x	y msol) que se cambian cada vez que se ejecuta una nueva llamada recursiva. El dominio	de valores se almacena en una lista de vectores de longitud D, ya que los elementos de este vector pueden tener diferentes longitudes, de acuerdo con sus valores de dominio.
+
+
+
+\newpage
+### Codificación
+La codificación de dichas funciones podemos observala acontinuación:
+
+```{r fsearch}
+fsearch
+```
+
+
+```{r dfseach}
+dfsearch 
+```
+Se crea un espacio de búsqueda con valores entre 0 y 9 en una matriz de 5 *7 y se define una función:
+```{r space}
+# función a evaluar
+fx1
+
+m <- 5  # número de variables
+n <- 5  # tamaño del espacio
+
+# definimos un espacio de busqueda
+dominio <- matrix(data=sample(0:9, m*n,TRUE),n,m)
+# mostramos el espacio de búsqueda
+dominio
+```
+
+
+El siguiente código prueba el funcionamiento del método de búsqueda ciega en amplitud:
+
+```{r test_fsearch}
+# búsqueda ciega en amplitud
+min <- fsearch(dominio,Fx=fx1,type="min")
+max <- fsearch(dominio,Fx=fx1,type="max")
+```
+
+
+```{r echo=FALSE}
+cat(c("Solución mínima: ", min$sol,"\n","Evaluación: ", min$eval,"\n"))
+cat(c("Solución máxima: ", max$sol,"\n","Evaluación: ", max$eval,"\n"))
+```
+El siguiente código prueba el funcionamiento de la fúncion de búsqueda ciega en profundidad:
+
+```{r test_dfsearch, warning=FALSE, tidy="styler"}
+# búsqueda ciega en profundidad
+min <- dfsearch(dominio,Fx=fx1,type="min")
+max <- dfsearch(dominio,Fx=fx1,type="max")
+```
+```{r echo=FALSE}
+cat(c("Solución mínima: ", min$bsol,"\n","Evaluación: ", min$beval,"\n"))
+cat(c("Solución máxima: ", max$bsol,"\n","Evaluación: ", max$beval,"\n"))
+```
+

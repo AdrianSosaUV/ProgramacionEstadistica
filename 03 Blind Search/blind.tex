@@ -1,0 +1,386 @@
+\documentclass[11pt,]{article}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
+\usepackage[]{mathpazo}
+
+
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+
+
+
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+    {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}%
+}
+%\fi
+\makeatother
+
+
+
+
+\setcounter{secnumdepth}{0}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+
+
+\title{Programación Estadística: Búsqueda ciega  }
+
+
+
+\author{\Large Adrián Sosa\vspace{0.05in} \newline\normalsize\emph{}   \and \Large \vspace{0.05in} \newline\normalsize\emph{Universidad Veracruzana}  }
+
+
+
+\date{}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\itshape}
+\titleformat*{\subsubsection}{\normalsize\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage[strings]{underscore} % protect underscores in most circumstances
+
+
+
+\newtheorem{hypothesis}{Hypothesis}
+\usepackage{setspace}
+
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{hyperref}
+
+% move the hyperref stuff down here, after header-includes, to allow for - \usepackage{hyperref}
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\fi
+}
+
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Adrián Sosa () and  (Universidad Veracruzana)},
+            pdfkeywords = {},  
+            pdftitle={Programación Estadística: Búsqueda ciega},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Add an option for endnotes. -----
+
+
+% add tightlist ----------
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% add some other packages ----------
+
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+
+\begin{document}
+	
+% \pagenumbering{arabic}% resets `page` counter to 1 
+%
+% \maketitle
+
+{% \usefont{T1}{pnc}{m}{n}
+\setlength{\parindent}{0pt}
+\thispagestyle{plain}
+{\fontsize{18}{20}\selectfont\raggedright 
+\maketitle  % title \par  
+
+}
+
+{
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12} 
+\textbf{\authorfont Adrián Sosa} \hskip 15pt \emph{\small }   \par \textbf{\authorfont } \hskip 15pt \emph{\small Universidad Veracruzana}   
+}
+
+}
+
+
+
+
+
+
+\vskip -8.5pt
+
+
+ % removetitleabstract
+
+\noindent \doublespacing 
+
+\hypertarget{buxfasqueda-ciega}{%
+\section{Búsqueda ciega}\label{buxfasqueda-ciega}}
+
+La búsqueda ciega completa asume el agotamiento de todas las
+alternativas, donde cualquier búsqueda previa no afecta la forma en que
+se prueban las siguientes soluciones. Dado que Se prueba el espacio de
+búsqueda completo, siempre se encuentra la solución óptima. La búsqueda
+ciega solo es aplicable a espacios de búsqueda discretos y es fácil de
+codificar de dos formas.
+
+Primero, configurando el espacio de búsqueda completo en una matriz y
+luego probando secuencialmente cada fila (solución) de esta matriz.
+
+En segundo lugar, de forma recursiva, configurando el espacio de
+búsqueda como un árbol, donde cada rama denota un valor posible para una
+variable dada y todas las soluciones aparecen en las hojas (al mismo
+nivel).
+
+Dos ejemplos bastante conocidos delos métodos ciegos basados en
+estructuras de árbol son los algoritmos de profundidad y de amplitud.
+
+El primero comienza en la raíz del árbol y atraviesa cada rama tanto
+como esposible, antes de dar marcha atrás. El segundo también comienza
+en la raíz pero busca en un nivel base, buscando primero todos los nodos
+sucesivos de la raíz y luego el siguiente sucesivo a los nodos, etc.
+
+La principal desventaja de la búsqueda ciega pura es que no es factible
+cuando el espacio de búsqueda es continuo o demasiado grande, una
+situación que a menudo ocurre con las tareas del mundo real.
+
+Esta sección presenta dos funciones de búsqueda ciega: fsearch y
+dfsearch. La primera es una función más simple que requiere que el
+espacio de búsqueda se defina explícitamente en una matriz en el formato
+soluciones D (búsqueda de argumento), mientras que la última realiza una
+implementación recursiva de la búsqueda en profundidad y requiere la
+definición de los valores de dominio para cada variable a optimizar
+(dominio de argumento). Ambas funciones reciben como argumentos la
+función de evaluación (FUN), el tipo de optimización (tipo, un carácter
+con ``min'' o ``max'') y argumentos adicionales, (denotados por \ldots{}
+y que podría ser utilizado por la función de evaluación FUN).
+
+Donde dfsearch es una función recursiva que prueba si el nodo del árbol
+es una salida, calcula la función de evaluación para la solución
+respectiva, de lo contrario atraviesa las sub ramas del nodo. Esta
+función requiere algunas variables de estado de memoria (l, b, x y msol)
+que se cambian cada vez que se ejecuta una nueva llamada recursiva. El
+dominio de valores se almacena en una lista de vectores de longitud D,
+ya que los elementos de este vector pueden tener diferentes longitudes,
+de acuerdo con sus valores de dominio.
+
+\newpage
+
+\hypertarget{codificaciuxf3n}{%
+\subsubsection{Codificación}\label{codificaciuxf3n}}
+
+La codificación de dichas funciones podemos observala acontinuación:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fsearch}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (sol, Fx, type = "min", ...) 
+## {
+##     x <- apply(sol, 1, Fx, ...)
+##     ib <- switch(type, min = which.min(x), max = which.max(x))
+##     return(list(index = ib, sol = sol[ib], eval = x[ib]))
+## }
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfsearch }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (domino, Fx, l = 1, b = 1, type = "min", D = length(dominio), 
+##     x = rep(NA, D), msol = switch(type, min = list(sol = NULL, 
+##         eval = Inf), max = list(sol = NULL, eval = -Inf)), ...) 
+## {
+##     if ((l - 1) == D) {
+##         f <- Fx(x, ...)
+##         fb <- msol$eval
+##         ib <- switch(type, min = which.min(c(fb, f)), max = which.max(c(fb, 
+##             f)))
+##         if (ib == 1) 
+##             return(msol)
+##         else return(list(index = ib, sol = x, eval = f, bsol = x[ib], 
+##             beval = f[ib]))
+##     }
+##     else {
+##         for (j in 1:length(dominio[[l]])) {
+##             x[l] <- dominio[[l]][j]
+##             msol <- dfsearch(dominio, Fx, l + 1, j, type, D = D, 
+##                 x = x, msol = msol, ...)
+##         }
+##         return(msol)
+##     }
+## }
+\end{verbatim}
+
+Se crea un espacio de búsqueda con valores entre 0 y 9 en una matriz de
+5 *7 y se define una función:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# función a evaluar}
+\NormalTok{fx1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (x) 
+## {
+##     return(x^2 + 3 * x - 2)
+## }
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m <-}\StringTok{ }\DecValTok{5}  \CommentTok{# número de variables}
+\NormalTok{n <-}\StringTok{ }\DecValTok{5}  \CommentTok{# tamaño del espacio}
+
+\CommentTok{# definimos un espacio de busqueda}
+\NormalTok{dominio <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{data=}\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{9}\NormalTok{, m}\OperatorTok{*}\NormalTok{n,}\OtherTok{TRUE}\NormalTok{),n,m)}
+\CommentTok{# mostramos el espacio de búsqueda}
+\NormalTok{dominio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    9    3    3    7    5
+## [2,]    8    4    6    7    7
+## [3,]    3    2    3    8    0
+## [4,]    5    7    8    1    7
+## [5,]    7    4    2    2    7
+\end{verbatim}
+
+El siguiente código prueba el funcionamiento del método de búsqueda
+ciega en amplitud:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# búsqueda ciega en amplitud}
+\NormalTok{min <-}\StringTok{ }\KeywordTok{fsearch}\NormalTok{(dominio,}\DataTypeTok{Fx=}\NormalTok{fx1,}\DataTypeTok{type=}\StringTok{"min"}\NormalTok{)}
+\NormalTok{max <-}\StringTok{ }\KeywordTok{fsearch}\NormalTok{(dominio,}\DataTypeTok{Fx=}\NormalTok{fx1,}\DataTypeTok{type=}\StringTok{"max"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Solución mínima:  2 
+##  Evaluación:  -2
+\end{verbatim}
+
+\begin{verbatim}
+## Solución máxima:  9 
+##  Evaluación:  106
+\end{verbatim}
+
+El siguiente código prueba el funcionamiento de la fúncion de búsqueda
+ciega en profundidad:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# búsqueda ciega en profundidad}
+\NormalTok{min <-}\StringTok{ }\KeywordTok{dfsearch}\NormalTok{(dominio,}\DataTypeTok{Fx=}\NormalTok{fx1,}\DataTypeTok{type=}\StringTok{"min"}\NormalTok{)}
+\NormalTok{max <-}\StringTok{ }\KeywordTok{dfsearch}\NormalTok{(dominio,}\DataTypeTok{Fx=}\NormalTok{fx1,}\DataTypeTok{type=}\StringTok{"max"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Solución mínima:  7 
+##  Evaluación:  68
+\end{verbatim}
+
+\begin{verbatim}
+## Solución máxima:  8 
+##  Evaluación:  86
+\end{verbatim}
+
+\newpage
+\singlespacing 
+\end{document}
