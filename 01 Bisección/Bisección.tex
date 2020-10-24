@@ -340,16 +340,16 @@ espacio de búsqueda:
 \NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{()}
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(x))\{y[i] <-}\StringTok{ }\KeywordTok{fx1}\NormalTok{(x[i])\}}
 \CommentTok{# se optiene la ráiz}
-\NormalTok{raiz <-}\StringTok{ }\KeywordTok{biseccion}\NormalTok{(fx1, limI, limS)}
+\NormalTok{ráiz <-}\StringTok{ }\KeywordTok{biseccion}\NormalTok{(fx1, limI, limS)}
 \end{Highlighting}
 \end{Shaded}
 
-El resultado se almacenara en la variable \emph{raiz}, para conocerlo
+El resultado se almacenara en la variable \emph{ráiz}, para conocerlo
 basta con imprimirlo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{raiz}
+\NormalTok{ráiz}
 \end{Highlighting}
 \end{Shaded}
 
@@ -365,8 +365,8 @@ Si deseamos podémos gráficar la función y nuestro resultado.
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(x,y)  }
 \KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ df, }\DataTypeTok{mapping=}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{ x, }\DataTypeTok{y =}\NormalTok{y))}\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{color=}\DecValTok{4}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"text"}\NormalTok{,}\DataTypeTok{x=}\NormalTok{raiz}\DecValTok{-2}\NormalTok{, }\DataTypeTok{y=}\DecValTok{0}\NormalTok{, }\DataTypeTok{label=}\StringTok{"Raiz ->"}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }\DataTypeTok{x=}\NormalTok{raiz,}\DataTypeTok{y =}\DecValTok{0}\NormalTok{, }\DataTypeTok{size =}\DecValTok{3}\NormalTok{, }\DataTypeTok{shape=}\DecValTok{1}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"transparent"}\NormalTok{)}
+\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"text"}\NormalTok{,}\DataTypeTok{x=}\NormalTok{ráiz}\DecValTok{-2}\NormalTok{, }\DataTypeTok{y=}\DecValTok{0}\NormalTok{, }\DataTypeTok{label=}\StringTok{"Ráiz ->"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{, }\DataTypeTok{x=}\NormalTok{ráiz,}\DataTypeTok{y =}\DecValTok{0}\NormalTok{, }\DataTypeTok{size =}\DecValTok{3}\NormalTok{, }\DataTypeTok{shape=}\DecValTok{1}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"transparent"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
