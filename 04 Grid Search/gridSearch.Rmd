@@ -1,0 +1,88 @@
+---
+title: "Programación Estadística"
+author:
+- name: Adrián Sosa
+- affiliation: Universidad Veracruzana
+# date: "21/10/2020"
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: ../svm-latex-ms.tex
+subtitle: Búsqueda en malla o cuadrícula
+header-includes:
+  -  \usepackage{hyperref}
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+# spacing: double
+endnote: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("grid.R", encoding = "utf-8")
+source("equaciones.R", encoding = "utf-8")
+source("../funciones/graph.R", encoding = "utf-8")
+```
+
+# Búsqueda en malla o cuadrícula
+
+Este modelo explora el espacio de búsqueda a partir de una solución de poblaciones llamada malla que se expande y contrae con la finalidad de encontrar una solución.
+
+Existe una amplia variedad de problemas y aplicaciones que tienen las siguientes finalidades: encuentra el área mínima, el menor coste, la forma óptima, la menor resistencia, el máximo beneficio, el mayor alcance... Todos estos problemas, se engloban dentro de la categoría de Optimización de funciones y pueden ser resueltos aplicando el cálculo diferencial.
+
+### Codificación
+La fúncion de *Búsqueda en malla* es sencilla de codificar, podemos verlo a continuación:
+
+```{r echo= FALSE}
+gsearch
+```
+
+### Implementación
+
+Su implementación podemos verla a continuación para la funcion Fx1 en un intervalo de -2 a 3.
+
+ $$Fx1= x^3 + 6x -1 $$
+
+
+```{r echo= FALSE}
+fx1 <- function(x){return(x^3 - 6*x -1)}
+```
+Donde primero se construye un espacio de búsqueda con todas las posibles soluciones y después se utiliza la *Búsqueda Ciega en amplitud* para encontrar el resultado deseado.
+
+Se definen las variables que nos ayudaran acrear el espacio de búsqueda:
+
+```{r var_aux}
+limI <- -2
+limS <- 3
+steps <- 0.01					
+var <- 1					# número de variables
+upper <- rep (limS,var)		# vector con el valor mas alto de cada dimensión
+lower <- rep (limI,var)		# vector con el valor mas bajo de cada dimensión
+step  <- rep (steps,var)	# vector con el tamaño del paso para cada dimensión D
+
+```
+
+Ahora la función se implementa de la siguiente manera dándole los argumentos previamente definidos:
+
+```{r gsearch_0}
+min <- gsearch(step,lower,upper,fx1,type="min")
+max <- gsearch(step,lower,upper,fx1,type="max")
+```
+
+Para conocer los resultados podemos imprimir los valores sol y eval de las variables min y max:
+
+```{r echo=FALSE}
+cat(c("Solución mínima: ", min$sol,"\n","Evaluación: ", min$eval,"\n"))
+cat(c("Solución máxima: ", max$sol,"\n","Evaluación: ", max$eval,"\n"))
+```
+
+Si deseamos ver los resultados gráficamente basta con graficar la función y mostrar los resultados mínimos y máximos:
+
+```{r echo=FALSE}
+graph(limI,limS,steps,fx1,min,max)
+```
+
