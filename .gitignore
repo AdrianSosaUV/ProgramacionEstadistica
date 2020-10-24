@@ -122,3 +122,5 @@ examples.py
 *.ipynb
 *.docx
 
+*.Rproj.user
+*.Rproj
