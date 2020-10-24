@@ -1,0 +1,97 @@
+---
+title: "Programación Estadística"
+author:
+- name: Adrián Sosa
+- affiliation: Universidad Veracruzana
+#date: "21/10/2020"
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: ../svm-latex-ms.tex
+subtitle: Bisección
+header-includes:
+  -  \usepackage{hyperref}
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+# spacing: double
+endnote: no
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("biseccion.R", encoding = "utf-8")
+source("ecuaciones.R", encoding = "utf-8")
+source("../funciones/graph.R", encoding = "utf-8")
+library("ggplot2")
+```
+## Bisección
+
+El método de bisección es uno de los más versátiles para determinar una raíz real en un intervalo de una ecuación dada, es fácil de comprender, aunque si se desea una mayor exactitud el número de cálculos que hay que realizar aumenta considerablemente.
+
+El método de bisección se basa en el Teorema de Bolzano, el cual afirma que si se tiene una función real $y = f(x)$ continua en el intervalo $\textbf{[a,b]}$ donde el signo de la función en el extremo $\textbf{a}$ es distinto al signo de la función en el extremo $\textbf{b}$ del intervalo, entonces existe al menos un $c \in [a,b] |   f(c)=0$  , que es la raíz buscada.
+
+### Procedimiento 
+* Debe existir seguridad sobre la continuidad de $f(x)$ sobre el segmento $[a,b]$.
+* Se verifica que $f(a)f(b)<0$.
+* Se calcula el punto medio m en el intervalo $[a,b]$ y se evalúa $f(m)$ si ese valor es igual a 0 ya se ha encontrado la raíz.
+* En caso contrario se verifica si $f(m)$ tiene signo opuesto con $f(a)$ o con $f(b)$.
+* se redefine el intervalo $[a,b]$ como$ [a,m]$ o $[m,b]$ según se haya determinado en cual de los casos haya el cambio de signo. 
+* Con este nuevo intervalo se continúa sucesivamente encerrando la solución en un intervalo cada vez más pequeño, hasta alcanzar la precisión deseada
+
+### Ventajas
+* Es siempre convergente.
+* Es óptimo para resolver una ecuación $f(x)=0$ cuando no se sabe nada de $f$, excepto calcular su signo.
+* Requiere que $f$ sea continua en el intervalo especificado.
+* Se puede establecer el límite de error.
+* Es fácil de implementar.
+
+
+### Desventajas
+
+* Converge muy lentamente.
+* Permite encontrar solo una raíz, aunque existan más en el intervalo.
+* Algunas veces la determinación del intervalo inicial no es muy fácil.
+* No puede determinar raíces complejas.
+* Es difícil generalizarlo para dimensiones superiores.
+
+\newpage
+### Codificación
+
+El método de bisección es relativamente sencillo de implementar: 
+```{r echo=FALSE}
+biseccion
+```
+
+Para utilizarlo debemos definir una función para encontrar su ráiz y un espacio de búsqueda:
+```{r}
+fx1
+# se definen los límites
+limS <- 10
+limI <- -10
+steps <- 0.01
+# se crea el espacio de búsqueda
+x <- seq(limI, limS, steps)
+y <- c()
+for (i in seq_along(x)){y[i] <- fx1(x[i])}
+# se optiene la ráiz
+raiz <- biseccion(fx1, limI, limS)
+
+```
+El resultado se almacenara en la variable *raiz*, para conocerlo basta con imprimirlo:
+```{r}
+raiz
+```
+Si deseamos podémos gráficar la función y nuestro resultado.
+
+```{r}
+# se crea un dataframe
+df <- data.frame(x,y)  
+ggplot(data= df, mapping=aes(x= x, y =y))+
+  geom_line(color=4)+
+  annotate(geom="text",x=raiz-2, y=0, label="Raiz ->")+
+  annotate(geom="point", x=raiz,y =0, size =3, shape=1, fill="transparent")
+```
+
