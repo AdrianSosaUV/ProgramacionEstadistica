@@ -32,15 +32,65 @@ Monte Carlo es un metodo númerico muy versatil y facil de implementar, se puede
 
 El árbol de búsqueda de Monte Carlo, es un algoritmo de búsqueda heurístico para algunos tipos de procesos de toma de decisiones sobre todo los que trabajan con juegos. Así como el método de operación el enfoque de búsqueda de Monte Carlo se encuentra en el análisis de los movimientos mas prometedores, ampliando el árbol de búsqueda, basado en un muestreo aleatorio.
 
+### Ventajas
+* Se puede aplicar a juegos con un factor de ramificación tan grande que resultan inabordables con las técnicas tradicionales.
 
+* Se puede configurar para que se detenga después de una cantidad de tiempo prefijada, haciendo que con tiempos mayores se obtengan jugadores más fuertes.
+
+* No requiere necesariamente de un conocimiento específico del juego, por lo que puede ser utilizado como motor de juego general; y es adaptable a juegos que incorporan aleatoriedad en las reglas.
+
+
+
+\newpage
 ### Procedimiento
 
-*Selección:* empezar desde la raíz *R* y seleccionar nodos hijos sucesivos hasta alcanzar un nodo hoja *L*. La selección 
+*Selección:* empezar desde la raíz *R* y seleccionar nodos hijos sucesivos hasta alcanzar un nodo hoja *L*. La selección describe una manera de elegir los nodos hijos, que permitan que el árbol se expanda hacia movimientos mas prometedores, que es la esencia del árbol de búsqueda Monte Carlo.
 
-![diagrama 1]("/diagramas/uno.jpg", diagrama 1 )
+![Selección](./diagramas/seleccion.jpg){ width=50% }
+
+
+*Expansión:* empezar desde la raíz *R* y seleccionar nodos hijos sucesivos hasta alcanzar un nodo hoja *L*. La selección describe una manera de elegir los nodos hijos, que permitan que el árbol se expanda hacia movimientos mas prometedores, que es la esencia del árbol de búsqueda Monte Carlo.
+
+![Expansión](./diagramas/expansion.jpg){ width=50% }
+
+\newpage
+*Simulación:* realizar una simulación aleatoria desde el nodo C.
+
+![Simulación](./diagramas/simulacion.jpg){ width=50% }
+
+
+*Retro Propagación:* utilizar el resultado de la simulación para actualizar la información en los nodos en el camino de *C* a *R*.
+
+![Retro Propagación](./diagramas/backpropagation.jpg){ width=50% }
 
 
 \newpage
 ### Codificación
+
+La codificación de Búsqueda Monte Carlo es relativamente sencilla, al hacer uso de el método de búsqueda ciega:
+
+```{r}
+mcsearch
+```
+Su implementación de igual manera es sencilla:
+
+```{r}
+N=10000 # se define el número de muestras
+#para la función de esfera:
+D <- c(2,30)
+label="esfera"
+for(i in 1:length(D))
+{ 
+  S=mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),sphere,"min")
+  cat(label,"D:",D[i],"s:",S$sol,"f:",S$eval,"\n")
+}
+label="Rastrigin"
+for(i in 1:length(D))
+{ S=mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),rastrigin,"min")
+cat(label,"D:",D[i],"s:",S$sol,"f:",S$eval,"\n")
+}
+```
+
+
 
 

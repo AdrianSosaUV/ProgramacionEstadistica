@@ -39,6 +39,46 @@
 
 \setcounter{secnumdepth}{0}
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -182,22 +222,131 @@ enfoque de búsqueda de Monte Carlo se encuentra en el análisis de los
 movimientos mas prometedores, ampliando el árbol de búsqueda, basado en
 un muestreo aleatorio.
 
+\hypertarget{ventajas}{%
+\subsubsection{Ventajas}\label{ventajas}}
+
+\begin{itemize}
+\item
+  Se puede aplicar a juegos con un factor de ramificación tan grande que
+  resultan inabordables con las técnicas tradicionales.
+\item
+  Se puede~configurar para que se detenga después de una cantidad de
+  tiempo prefijada, haciendo que con tiempos mayores se obtengan
+  jugadores más fuertes.
+\item
+  No requiere~necesariamente de un~conocimiento específico del juego,
+  por lo que puede ser utilizado como motor de juego general; y
+  es~adaptable a juegos~que incorporan~aleatoriedad~en las reglas.
+\end{itemize}
+
+\newpage
+
 \hypertarget{procedimiento}{%
 \subsubsection{Procedimiento}\label{procedimiento}}
 
 \emph{Selección:} empezar desde la raíz \emph{R} y seleccionar nodos
 hijos sucesivos hasta alcanzar un nodo hoja \emph{L}. La selección
+describe una manera de elegir los nodos hijos, que permitan que el árbol
+se expanda hacia movimientos mas prometedores, que es la esencia del
+árbol de búsqueda Monte Carlo.
 
 \begin{figure}
 \centering
-\includegraphics{"/diagramas/uno.jpg"}
-\caption{diagrama 1}
+\includegraphics[width=0.5\textwidth,height=\textheight]{./diagramas/seleccion.jpg}
+\caption{Selección}
+\end{figure}
+
+\emph{Expansión:} empezar desde la raíz \emph{R} y seleccionar nodos
+hijos sucesivos hasta alcanzar un nodo hoja \emph{L}. La selección
+describe una manera de elegir los nodos hijos, que permitan que el árbol
+se expanda hacia movimientos mas prometedores, que es la esencia del
+árbol de búsqueda Monte Carlo.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=\textheight]{./diagramas/expansion.jpg}
+\caption{Expansión}
+\end{figure}
+
+\newpage
+
+\emph{Simulación:} realizar una simulación aleatoria desde el nodo C.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=\textheight]{./diagramas/simulacion.jpg}
+\caption{Simulación}
+\end{figure}
+
+\emph{Retro Propagación:} utilizar el resultado de la simulación para
+actualizar la información en los nodos en el camino de \emph{C} a
+\emph{R}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=\textheight]{./diagramas/backpropagation.jpg}
+\caption{Retro Propagación}
 \end{figure}
 
 \newpage
 
 \hypertarget{codificaciuxf3n}{%
 \subsubsection{Codificación}\label{codificaciuxf3n}}
+
+La codificación de Búsqueda Monte Carlo es relativamente sencilla, al
+hacer uso de el método de búsqueda ciega:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mcsearch}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (N, lower, upper, Fx, type = "min", ...) 
+## {
+##     D <- length(lower)
+##     s <- matrix(nrow = N, ncol = D)
+##     for (i in 1:N) s[i, ] = runif(D, lower, upper)
+##     fsearch(sol = s, Fx = Fx, type = type, ...)
+## }
+\end{verbatim}
+
+Su implementación de igual manera es sencilla:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N=}\DecValTok{10000} \CommentTok{# se define el número de muestras}
+\CommentTok{#para la función de esfera:}
+\NormalTok{D <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{label=}\StringTok{"esfera"}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(D))}
+\NormalTok{\{ }
+\NormalTok{  S=}\KeywordTok{mcsearch}\NormalTok{(N,}\KeywordTok{rep}\NormalTok{(}\OperatorTok{-}\FloatTok{5.2}\NormalTok{,D[i]),}\KeywordTok{rep}\NormalTok{(}\FloatTok{5.2}\NormalTok{,D[i]),sphere,}\StringTok{"min"}\NormalTok{)}
+  \KeywordTok{cat}\NormalTok{(label,}\StringTok{"D:"}\NormalTok{,D[i],}\StringTok{"s:"}\NormalTok{,S}\OperatorTok{$}\NormalTok{sol,}\StringTok{"f:"}\NormalTok{,S}\OperatorTok{$}\NormalTok{eval,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## esfera D: 2 s: -0.02428153 f: 0.003577936 
+## esfera D: 30 s: -0.6641743 f: 108.1639
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{label=}\StringTok{"Rastrigin"}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(D))}
+\NormalTok{\{ S=}\KeywordTok{mcsearch}\NormalTok{(N,}\KeywordTok{rep}\NormalTok{(}\OperatorTok{-}\FloatTok{5.2}\NormalTok{,D[i]),}\KeywordTok{rep}\NormalTok{(}\FloatTok{5.2}\NormalTok{,D[i]),rastrigin,}\StringTok{"min"}\NormalTok{)}
+\KeywordTok{cat}\NormalTok{(label,}\StringTok{"D:"}\NormalTok{,D[i],}\StringTok{"s:"}\NormalTok{,S}\OperatorTok{$}\NormalTok{sol,}\StringTok{"f:"}\NormalTok{,S}\OperatorTok{$}\NormalTok{eval,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rastrigin D: 2 s: -0.003405824 f: 0.04997579 
+## Rastrigin D: 30 s: -2.882636 f: 356.9194
+\end{verbatim}
 
 \newpage
 \singlespacing 
