@@ -126,3 +126,7 @@ examples.py
 *.Rproj
 .Rproj.user
 *_files/
+*.drawio
+
+*Resuelto*
+tarea*

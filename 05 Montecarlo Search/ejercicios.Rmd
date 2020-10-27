@@ -1,0 +1,62 @@
+---
+title: "Programación Estadística"
+author:
+- name: Adrián Sosa
+- affiliation: Universidad Veracruzana
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: ../svm-latex-ms.tex
+subtitle: Ejercicios Búsqueda Montecarlo
+header-includes:
+  -  \usepackage{hyperref}
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+endnote: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("montecarlo.R", encoding = "utf-8")
+source("ecuaciones.R", encoding = "utf-8")
+
+```
+
+## Ejercicios Búsqueda Montecarlo
+Realice los siguientes ejercicios con busqueda Montecarlo para D = [2,30,100,500], N= 10000, 100000
+
+### Ecuación 1
+ $$Fx= (x^2 + 3)(x^2 - 4x) $$  
+
+### Ecuación 2
+ $$Fx= (6x + 5)(x^3 - 2) $$  
+ 
+### Ecuación 3
+ $$Fx= x(1 - x^2) $$  
+ 
+### Ecuación 4
+ $$Fx= x(x^2 + 8)$$  
+ 
+### Ecuación 5
+ $$Fx= x^3 cos(x) $$  
+ 
+### Ecuación 6
+ $$Fx= x sen(x) $$  
+ 
+### Ecuación 7
+ $$Fx= \frac{x}{x^2+1} $$  
+ 
+### Ecuación 8
+ $$Fx= \frac{x^2 + 4}{5x - 3} $$  
+ 
+### Ecuación 9
+ $$Fx= \frac{sin(x)}{x^3 + 1} $$  
+ 
+### Ecuación 10
+ $$Fx= \frac{sen(x)}{x^2} $$  
+ 
+ 

@@ -1,0 +1,219 @@
+\documentclass[11pt,]{article}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
+\usepackage[]{mathpazo}
+
+
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+
+
+
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+    {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}%
+}
+%\fi
+\makeatother
+
+
+
+
+\setcounter{secnumdepth}{0}
+
+
+
+
+\title{Programación Estadística: Ejercicios Búsqueda Montecarlo  }
+
+
+
+\author{\Large Adrián Sosa\vspace{0.05in} \newline\normalsize\emph{}   \and \Large \vspace{0.05in} \newline\normalsize\emph{Universidad Veracruzana}  }
+
+
+
+\date{}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\itshape}
+\titleformat*{\subsubsection}{\normalsize\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage[strings]{underscore} % protect underscores in most circumstances
+
+
+
+\newtheorem{hypothesis}{Hypothesis}
+\usepackage{setspace}
+
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{hyperref}
+
+% move the hyperref stuff down here, after header-includes, to allow for - \usepackage{hyperref}
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\fi
+}
+
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Adrián Sosa () and  (Universidad Veracruzana)},
+            pdfkeywords = {},  
+            pdftitle={Programación Estadística: Ejercicios Búsqueda Montecarlo},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Add an option for endnotes. -----
+
+
+% add tightlist ----------
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% add some other packages ----------
+
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+
+\begin{document}
+	
+% \pagenumbering{arabic}% resets `page` counter to 1 
+%
+% \maketitle
+
+{% \usefont{T1}{pnc}{m}{n}
+\setlength{\parindent}{0pt}
+\thispagestyle{plain}
+{\fontsize{18}{20}\selectfont\raggedright 
+\maketitle  % title \par  
+
+}
+
+{
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12} 
+\textbf{\authorfont Adrián Sosa} \hskip 15pt \emph{\small }   \par \textbf{\authorfont } \hskip 15pt \emph{\small Universidad Veracruzana}   
+}
+
+}
+
+
+
+
+
+
+\vskip -8.5pt
+
+
+ % removetitleabstract
+
+\noindent  
+
+\hypertarget{ejercicios-buxfasqueda-montecarlo}{%
+\subsection{Ejercicios Búsqueda
+Montecarlo}\label{ejercicios-buxfasqueda-montecarlo}}
+
+Realice los siguientes ejercicios con busqueda Montecarlo para D =
+{[}2,30,100,500{]}, N= 10000, 100000
+
+\hypertarget{ecuaciuxf3n-1}{%
+\subsubsection{Ecuación 1}\label{ecuaciuxf3n-1}}
+
+\[Fx= (x^2 + 3)(x^2 - 4x) \]
+
+\hypertarget{ecuaciuxf3n-2}{%
+\subsubsection{Ecuación 2}\label{ecuaciuxf3n-2}}
+
+\[Fx= (6x + 5)(x^3 - 2) \]
+
+\hypertarget{ecuaciuxf3n-3}{%
+\subsubsection{Ecuación 3}\label{ecuaciuxf3n-3}}
+
+\[Fx= x(1 - x^2) \]
+
+\hypertarget{ecuaciuxf3n-4}{%
+\subsubsection{Ecuación 4}\label{ecuaciuxf3n-4}}
+
+\[Fx= x(x^2 + 8)\]
+
+\hypertarget{ecuaciuxf3n-5}{%
+\subsubsection{Ecuación 5}\label{ecuaciuxf3n-5}}
+
+\[Fx= x^3 cos(x) \]
+
+\hypertarget{ecuaciuxf3n-6}{%
+\subsubsection{Ecuación 6}\label{ecuaciuxf3n-6}}
+
+\[Fx= x sen(x) \]
+
+\hypertarget{ecuaciuxf3n-7}{%
+\subsubsection{Ecuación 7}\label{ecuaciuxf3n-7}}
+
+\[Fx= \frac{x}{x^2+1} \]
+
+\hypertarget{ecuaciuxf3n-8}{%
+\subsubsection{Ecuación 8}\label{ecuaciuxf3n-8}}
+
+\[Fx= \frac{x^2 + 4}{5x - 3} \]
+
+\hypertarget{ecuaciuxf3n-9}{%
+\subsubsection{Ecuación 9}\label{ecuaciuxf3n-9}}
+
+\[Fx= \frac{sin(x)}{x^3 + 1} \]
+
+\hypertarget{ecuaciuxf3n-10}{%
+\subsubsection{Ecuación 10}\label{ecuaciuxf3n-10}}
+
+\[Fx= \frac{sen(x)}{x^2} \]
+
+\newpage
+\singlespacing 
+\end{document}
