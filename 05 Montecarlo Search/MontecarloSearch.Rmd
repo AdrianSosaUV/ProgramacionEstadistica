@@ -1,0 +1,46 @@
+---
+title: "Programación Estadística"
+author:
+- name: Adrián Sosa
+- affiliation: Universidad Veracruzana
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: ../svm-latex-ms.tex
+subtitle: Búsqueda Montecarlo
+header-includes:
+  -  \usepackage{hyperref}
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+endnote: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("montecarlo.R", encoding = "utf-8")
+source("ecuaciones.R", encoding = "utf-8")
+
+```
+
+## Búsqueda Montecarlo
+
+Monte Carlo es un metodo númerico muy versatil y facil de implementar, se puede aplicar a problemas de N-dimensiones, en contraste con búsqueda en malla, el método consiste en la elaboración  de N puntos aleatorios usando una distribución de probabilidad sobre el dominio del problema, La complejidad del esfuerzo computacional es $\Phi(N)$.
+
+El árbol de búsqueda de Monte Carlo, es un algoritmo de búsqueda heurístico para algunos tipos de procesos de toma de decisiones sobre todo los que trabajan con juegos. Así como el método de operación el enfoque de búsqueda de Monte Carlo se encuentra en el análisis de los movimientos mas prometedores, ampliando el árbol de búsqueda, basado en un muestreo aleatorio.
+
+
+### Procedimiento
+
+*Selección:* empezar desde la raíz *R* y seleccionar nodos hijos sucesivos hasta alcanzar un nodo hoja *L*. La selección 
+
+![diagrama 1]("/diagramas/uno.jpg", diagrama 1 )
+
+
+\newpage
+### Codificación
+
+
