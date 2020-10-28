@@ -26,6 +26,7 @@ source("ecuaciones.R", encoding = "utf-8")
 
 ```
 
+
 ## Búsqueda Montecarlo
 
 Monte Carlo es un metodo númerico muy versatil y facil de implementar, se puede aplicar a problemas de N-dimensiones, en contraste con búsqueda en malla, el método consiste en la elaboración  de N puntos aleatorios usando una distribución de probabilidad sobre el dominio del problema, La complejidad del esfuerzo computacional es $\Phi(N)$.
@@ -77,20 +78,23 @@ Su implementación de igual manera es sencilla:
 ```{r}
 N=10000 # se define el número de muestras
 #para la función de esfera:
-D <- c(2,30)
+D <- c(2,30,50)
 label="esfera"
 for(i in 1:length(D))
 { 
-  S=mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),sphere,"min")
+  S <- mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),sphere,"min")
   cat(label,"D:",D[i],"s:",S$sol,"f:",S$eval,"\n")
 }
 label="Rastrigin"
 for(i in 1:length(D))
-{ S=mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),rastrigin,"min")
+{ S <- mcsearch(N,rep(-5.2,D[i]),rep(5.2,D[i]),rastrigin,"min")
 cat(label,"D:",D[i],"s:",S$sol,"f:",S$eval,"\n")
 }
 ```
 
-
-
-
+esfera D: 2 s: -0.01670461 f: 0.0004300608 
+esfera D: 30 s: -1.775842 f: 118.7902 
+esfera D: 50 s: -1.852643 f: 248.5227 
+Rastrigin D: 2 s: 0.9941355 f: 1.159895 
+Rastrigin D: 30 s: 3.217168 f: 356.8341 
+Rastrigin D: 50 s: 0.9309262 f: 661.3887 
